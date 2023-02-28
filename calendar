@@ -1,0 +1,42 @@
+def leap_year(y):
+    if y %4 == 0:
+        if y%100!=0:
+            return 1
+        elif y%400==0:
+            return 1
+        else:
+            return 0
+    else:
+        return 0
+def number_of_days(m,y):
+    if m == 1 or m ==3 or m == 5 or m == 7 or m == 8 or m == 10 or m == 12:
+        return 31
+    elif m == 2:
+        return 28 + leap_year(y)
+    else:
+        return 30
+def days_passed(d,m,y):
+    total_days = 0 
+    c = 1
+    while c<m:
+        total_days +=number_of_days(c,y)
+        c+=1
+    total_days=total_days+(d-1)
+    return total_days
+    
+
+
+print("Please enter a date")
+day = int(input("Day: "))
+month = int(input("Month: "))
+year = int(input("Year: "))
+
+print("Menu: ")
+print("1) Calculate the number of days in the given month.")
+print("2) Calculate the number of days passed in the given year. ")
+num = int(input(""))
+
+if num == 1:
+    print(number_of_days(month,year))
+elif num == 2:
+    print(days_passed(day,month,year))
